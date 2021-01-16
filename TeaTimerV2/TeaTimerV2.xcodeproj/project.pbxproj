@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		30AB145F25A9057E00CE202C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB145E25A9057E00CE202C /* AppDelegate.swift */; };
 		30AB146125A9057E00CE202C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB146025A9057E00CE202C /* SceneDelegate.swift */; };
-		30AB146325A9057E00CE202C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB146225A9057E00CE202C /* ViewController.swift */; };
+		30AB146325A9057E00CE202C /* TeaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB146225A9057E00CE202C /* TeaCollectionViewController.swift */; };
 		30AB146825A9058000CE202C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30AB146725A9058000CE202C /* Assets.xcassets */; };
 		30AB146B25A9058000CE202C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30AB146925A9058000CE202C /* LaunchScreen.storyboard */; };
 		30AB147925A90F6100CE202C /* Tea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB147825A90F6100CE202C /* Tea.swift */; };
+		30C8F10425B31877001A441C /* TeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8F10325B31877001A441C /* TeaCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30AB145B25A9057E00CE202C /* TeaTimerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaTimerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AB145E25A9057E00CE202C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30AB146025A9057E00CE202C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		30AB146225A9057E00CE202C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30AB146225A9057E00CE202C /* TeaCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaCollectionViewController.swift; sourceTree = "<group>"; };
 		30AB146725A9058000CE202C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30AB146A25A9058000CE202C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30AB146C25A9058000CE202C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AB147825A90F6100CE202C /* Tea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tea.swift; sourceTree = "<group>"; };
+		30C8F10325B31877001A441C /* TeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 			children = (
 				30AB145E25A9057E00CE202C /* AppDelegate.swift */,
 				30AB146025A9057E00CE202C /* SceneDelegate.swift */,
-				30AB146225A9057E00CE202C /* ViewController.swift */,
+				30C8F10125B31863001A441C /* Views */,
 				30AB147B25A90F9F00CE202C /* Models */,
 				30AB146725A9058000CE202C /* Assets.xcassets */,
 				30AB146925A9058000CE202C /* LaunchScreen.storyboard */,
@@ -73,6 +75,15 @@
 				30AB147825A90F6100CE202C /* Tea.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		30C8F10125B31863001A441C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				30AB146225A9057E00CE202C /* TeaCollectionViewController.swift */,
+				30C8F10325B31877001A441C /* TeaCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,10 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30AB146325A9057E00CE202C /* ViewController.swift in Sources */,
+				30AB146325A9057E00CE202C /* TeaCollectionViewController.swift in Sources */,
 				30AB145F25A9057E00CE202C /* AppDelegate.swift in Sources */,
 				30AB147925A90F6100CE202C /* Tea.swift in Sources */,
 				30AB146125A9057E00CE202C /* SceneDelegate.swift in Sources */,
+				30C8F10425B31877001A441C /* TeaCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
