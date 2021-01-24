@@ -1,6 +1,6 @@
 import UIKit
 
-class AddTeaViewController: UIViewController {
+class AddTeaViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Properties
     
@@ -31,11 +31,11 @@ class AddTeaViewController: UIViewController {
 
         // Name textfield
         nameTextField.placeholder = "name"
-//        nameTextField.borderStyle = .line
         nameTextField.layer.borderWidth = 1
         nameTextField.layer.cornerRadius = 10
         nameTextField.layer.borderColor = UIColor.systemGray.cgColor
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        nameTextField.delegate = self
 
         // Brew time textfield
         brewTimeTextField.placeholder = "brew time"
@@ -43,6 +43,7 @@ class AddTeaViewController: UIViewController {
         brewTimeTextField.layer.cornerRadius = 10
         brewTimeTextField.layer.borderColor = UIColor.systemGray.cgColor
         brewTimeTextField.translatesAutoresizingMaskIntoConstraints = false
+        brewTimeTextField.delegate = self
 
         // Constraints
         NSLayoutConstraint.activate([
@@ -75,6 +76,15 @@ class AddTeaViewController: UIViewController {
         let tea = Tea(name: name, brewTime: brewTime)
         self.onNewTeaAdded?(tea)
         self.dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: UITextfieldDelegate methods
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            brewTimeTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
 
