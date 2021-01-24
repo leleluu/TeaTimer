@@ -84,6 +84,8 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField {
             brewTimeTextField.becomeFirstResponder()
+        } else {
+            saveButtonTapped()
         }
         return true
     }
