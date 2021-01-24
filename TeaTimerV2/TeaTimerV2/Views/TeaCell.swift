@@ -2,6 +2,12 @@ import UIKit
 
 class TeaCell: UICollectionViewCell {
 
+    // MARK: Properties
+
+var teaNameLabel = UILabel()
+
+    // MARK: Initialiser
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -11,8 +17,9 @@ class TeaCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var teaNameLabel = UILabel()
-    
+
+    // MARK: Private methods
+
     private func setupViews() {
         contentView.backgroundColor = .systemYellow
 

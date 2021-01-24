@@ -2,12 +2,16 @@ import UIKit
 
 class TeaCollectionViewController: UICollectionViewController {
 
+    // MARK: Properties
+
     // TODO: Remove dummy data
     let earlGrey = Tea(name: "Earl Grey", brewTime: 1)
     let rooibos = Tea(name: "Rooibos", brewTime: 2)
     let jasmine = Tea(name: "Jasmine", brewTime: 3)
 
     var teaCollection = [Tea]()
+
+    // MARK: ViewController life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +43,7 @@ class TeaCollectionViewController: UICollectionViewController {
 
     // MARK: Target action methods
 
-
-    @objc func addTeaButtonTapped() {
+    @objc private func addTeaButtonTapped() {
         let addTeaViewController = AddTeaViewController()
         let addTeaNavigationController = UINavigationController(rootViewController: addTeaViewController)
         self.navigationController?.present(addTeaNavigationController, animated: true, completion: nil)
