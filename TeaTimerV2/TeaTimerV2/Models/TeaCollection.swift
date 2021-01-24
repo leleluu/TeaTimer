@@ -2,6 +2,17 @@ import Foundation
 
 class TeaCollection {
 
+    // MARK: Initialiser
+
+    init() {
+        if let data = defaults.data(forKey: "teaCollection") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Tea].self, from: data) {
+                self.all = decoded
+            }
+        }
+    }
+
     // MARK: Properties
 
     private let defaults = UserDefaults.standard
@@ -13,6 +24,10 @@ class TeaCollection {
 
     public func add(_ tea: Tea) {
         all.append(tea)
-        defaults.setValue(self.all, forKey: "teaCollection")
+
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(all) {
+            defaults.set(data, forKey: "teaCollection")
+        }
     }
 }
