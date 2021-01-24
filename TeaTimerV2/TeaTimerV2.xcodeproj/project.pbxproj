@@ -14,6 +14,7 @@
 		30AB146B25A9058000CE202C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30AB146925A9058000CE202C /* LaunchScreen.storyboard */; };
 		30AB147925A90F6100CE202C /* Tea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB147825A90F6100CE202C /* Tea.swift */; };
 		30C8F10425B31877001A441C /* TeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8F10325B31877001A441C /* TeaCell.swift */; };
+		30FE7B9525BD926800707A35 /* AddTeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE7B9425BD926800707A35 /* AddTeaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		30AB146C25A9058000CE202C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AB147825A90F6100CE202C /* Tea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tea.swift; sourceTree = "<group>"; };
 		30C8F10325B31877001A441C /* TeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaCell.swift; sourceTree = "<group>"; };
+		30FE7B9425BD926800707A35 /* AddTeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				30AB146225A9057E00CE202C /* TeaCollectionViewController.swift */,
+				30FE7B9425BD926800707A35 /* AddTeaViewController.swift */,
 				30C8F10325B31877001A441C /* TeaCell.swift */,
 			);
 			path = Views;
@@ -158,6 +161,7 @@
 				30AB146325A9057E00CE202C /* TeaCollectionViewController.swift in Sources */,
 				30AB145F25A9057E00CE202C /* AppDelegate.swift in Sources */,
 				30AB147925A90F6100CE202C /* Tea.swift in Sources */,
+				30FE7B9525BD926800707A35 /* AddTeaViewController.swift in Sources */,
 				30AB146125A9057E00CE202C /* SceneDelegate.swift in Sources */,
 				30C8F10425B31877001A441C /* TeaCell.swift in Sources */,
 			);

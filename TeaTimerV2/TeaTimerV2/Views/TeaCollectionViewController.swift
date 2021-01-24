@@ -16,6 +16,9 @@ class TeaCollectionViewController: UICollectionViewController {
         teaCollection.append(jasmine)
 
         collectionView.backgroundColor = .white
+        self.title = "Tea Collection"
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTeaButtonTapped))
     
         collectionView.register(TeaCell.self, forCellWithReuseIdentifier: "cellid")
 
@@ -32,6 +35,15 @@ class TeaCollectionViewController: UICollectionViewController {
         cell.contentView.layer.cornerRadius = 30
         cell.teaNameLabel.text = teaCollection[indexPath.item].name
         return cell
+    }
+
+    // MARK: Target action methods
+
+
+    @objc func addTeaButtonTapped() {
+        let addTeaViewController = AddTeaViewController()
+        let addTeaNavigationController = UINavigationController(rootViewController: addTeaViewController)
+        self.navigationController?.present(addTeaNavigationController, animated: true, completion: nil)
     }
 }
 
