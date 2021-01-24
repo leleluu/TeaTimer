@@ -44,6 +44,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
         brewTimeTextField.layer.borderColor = UIColor.systemGray.cgColor
         brewTimeTextField.translatesAutoresizingMaskIntoConstraints = false
         brewTimeTextField.delegate = self
+        brewTimeTextField.keyboardType = .numberPad
 
         // Constraints
         NSLayoutConstraint.activate([
@@ -86,5 +87,6 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+
 }
 
