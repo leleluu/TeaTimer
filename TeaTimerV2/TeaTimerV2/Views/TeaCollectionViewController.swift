@@ -4,12 +4,12 @@ class TeaCollectionViewController: UICollectionViewController {
 
     // MARK: Properties
 
+    var teaCollection = [Tea]()
+
     // TODO: Remove dummy data
     let earlGrey = Tea(name: "Earl Grey", brewTime: 1)
     let rooibos = Tea(name: "Rooibos", brewTime: 2)
     let jasmine = Tea(name: "Jasmine", brewTime: 3)
-
-    var teaCollection = [Tea]()
 
     // MARK: ViewController life cycle
 
@@ -26,6 +26,13 @@ class TeaCollectionViewController: UICollectionViewController {
     
         collectionView.register(TeaCell.self, forCellWithReuseIdentifier: "cellid")
 
+    }
+
+    // MARK: Public methods
+
+    func addTea(tea: Tea) {
+        self.teaCollection.append(tea)
+        collectionView.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
@@ -45,8 +52,10 @@ class TeaCollectionViewController: UICollectionViewController {
 
     @objc private func addTeaButtonTapped() {
         let addTeaViewController = AddTeaViewController()
+        addTeaViewController.onNewTeaAdded = addTea
         let addTeaNavigationController = UINavigationController(rootViewController: addTeaViewController)
         self.navigationController?.present(addTeaNavigationController, animated: true, completion: nil)
+
     }
 }
 

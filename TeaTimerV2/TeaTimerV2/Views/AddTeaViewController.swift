@@ -7,6 +7,8 @@ class AddTeaViewController: UIViewController {
     private var nameTextField = UITextField()
     private var brewTimeTextField = UITextField()
 
+    var onNewTeaAdded: ((Tea) -> Void)?
+
     // MARK: ViewController life cycle
     
     override func viewDidLoad() {
@@ -15,6 +17,8 @@ class AddTeaViewController: UIViewController {
         view.backgroundColor = .white
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
 
         setupViews()
     }
@@ -59,5 +63,18 @@ class AddTeaViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @objc private func saveButtonTapped() {
+
+        guard let name = nameTextField.text,
+              let brewTimeText = brewTimeTextField.text,
+              let brewTime = Int(brewTimeText)
+        else {
+            return
+        }
+
+        let tea = Tea(name: name, brewTime: brewTime)
+        self.onNewTeaAdded?(tea)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
