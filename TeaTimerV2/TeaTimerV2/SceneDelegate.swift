@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         layout.minimumLineSpacing = 32
 
         let viewController = TeaCollectionViewController(collectionViewLayout: layout)
-        window?.rootViewController = viewController
+        let navigationViewController = UINavigationController(rootViewController: viewController)
+
+        window?.rootViewController = navigationViewController
         window?.makeKeyAndVisible()
 
     }
