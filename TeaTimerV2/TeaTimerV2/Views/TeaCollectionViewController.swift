@@ -4,20 +4,12 @@ class TeaCollectionViewController: UICollectionViewController {
 
     // MARK: Properties
 
-    var teaCollection = [Tea]()
-
-    // TODO: Remove dummy data
-    let earlGrey = Tea(name: "Earl Grey", brewTime: 1)
-    let rooibos = Tea(name: "Rooibos", brewTime: 2)
-    let jasmine = Tea(name: "Jasmine", brewTime: 3)
+    var teaCollection = TeaCollection()
 
     // MARK: ViewController life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        teaCollection.append(earlGrey)
-        teaCollection.append(rooibos)
-        teaCollection.append(jasmine)
 
         collectionView.backgroundColor = .white
         self.title = "Tea Collection"
@@ -31,20 +23,20 @@ class TeaCollectionViewController: UICollectionViewController {
     // MARK: Public methods
 
     func addTea(tea: Tea) {
-        self.teaCollection.append(tea)
+        teaCollection.add(tea)
         collectionView.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return teaCollection.count
+        return teaCollection.all.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath) as! TeaCell
         cell.contentView.layer.cornerRadius = 30
-        cell.teaNameLabel.text = teaCollection[indexPath.item].name
+        cell.teaNameLabel.text = teaCollection.all[indexPath.item].name
         return cell
     }
 
