@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300E46A625C3F874000FA28E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E46A525C3F874000FA28E /* TimerViewController.swift */; };
 		30AB145F25A9057E00CE202C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB145E25A9057E00CE202C /* AppDelegate.swift */; };
 		30AB146125A9057E00CE202C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB146025A9057E00CE202C /* SceneDelegate.swift */; };
 		30AB146325A9057E00CE202C /* TeaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB146225A9057E00CE202C /* TeaCollectionViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300E46A525C3F874000FA28E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		30AB145B25A9057E00CE202C /* TeaTimerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaTimerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AB145E25A9057E00CE202C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30AB146025A9057E00CE202C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				30AB146225A9057E00CE202C /* TeaCollectionViewController.swift */,
 				30FE7B9425BD926800707A35 /* AddTeaViewController.swift */,
 				30C8F10325B31877001A441C /* TeaCell.swift */,
+				300E46A525C3F874000FA28E /* TimerViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				30AB145F25A9057E00CE202C /* AppDelegate.swift in Sources */,
 				30AB147925A90F6100CE202C /* Tea.swift in Sources */,
 				30FE7B9525BD926800707A35 /* AddTeaViewController.swift in Sources */,
+				300E46A625C3F874000FA28E /* TimerViewController.swift in Sources */,
 				30AB146125A9057E00CE202C /* SceneDelegate.swift in Sources */,
 				30C8F10425B31877001A441C /* TeaCell.swift in Sources */,
 				30FE7B9825BDBA3700707A35 /* TeaCollection.swift in Sources */,

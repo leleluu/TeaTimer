@@ -40,6 +40,13 @@ class TeaCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tea = teaCollection.all[indexPath.item]
+        let timerViewController = TimerViewController(teaName: tea.name, brewTime: tea.brewTime)
+        timerViewController.title = tea.name
+        navigationController?.pushViewController(timerViewController, animated: true)
+    }
+
     // MARK: Target action methods
 
     @objc private func addTeaButtonTapped() {
