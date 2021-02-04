@@ -66,20 +66,13 @@ class TimerViewController: UIViewController {
 
     @objc func startButtonTapped() {
         timer = Timer.scheduledTimer(
-            timeInterval: 1,
-            target: self,
-            selector: #selector(timerAction),
-            userInfo: nil,
-            repeats: true
-        )
-    }
-
-    @objc func timerAction() {
-        if timeRemaining == 0 {
-            timer.invalidate()
-        } else {
-            timeRemaining -= 1
-            timerLabel.text = String(timeRemaining)
+            withTimeInterval: 1, repeats: true) { timer in
+            if self.timeRemaining == 0 {
+                timer.invalidate()
+            } else {
+                self.timeRemaining -= 1
+                self.timerLabel.text = String(self.timeRemaining)
+            }
         }
     }
 }
