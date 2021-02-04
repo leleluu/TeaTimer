@@ -8,12 +8,15 @@ class TimerViewController: UIViewController {
     private let brewTime: Int
     var timerLabel = UILabel()
     private var startButton = UIButton()
+    private var timer = Timer()
+    private var timeRemaining: Int
 
     // MARK: Initializers
 
     init(teaName: String, brewTime: Int) {
         self.teaName = teaName
         self.brewTime = brewTime
+        self.timeRemaining = brewTime
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -37,7 +40,7 @@ class TimerViewController: UIViewController {
         view.addSubview(startButton)
 
         // Timer label
-        timerLabel.text = String(brewTime) // okay as string for now
+        timerLabel.text = String(brewTime)
         timerLabel.backgroundColor = .systemTeal
         timerLabel.textColor = .white
         timerLabel.font = timerLabel.font.withSize(100)
@@ -48,6 +51,7 @@ class TimerViewController: UIViewController {
         startButton.setTitle("START", for: .normal)
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.backgroundColor = .systemOrange
+        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
 
         // Constraints
         NSLayoutConstraint.activate([
@@ -58,5 +62,24 @@ class TimerViewController: UIViewController {
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             startButton.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32)
         ])
+    }
+
+    @objc func startButtonTapped() {
+        timer = Timer.scheduledTimer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(timerAction),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+
+    @objc func timerAction() {
+        if timeRemaining == 0 {
+            timer.invalidate()
+        } else {
+            timeRemaining -= 1
+            timerLabel.text = String(timeRemaining)
+        }
     }
 }
