@@ -40,7 +40,7 @@ class TimerViewController: UIViewController {
         view.addSubview(startButton)
 
         // Timer label
-        timerLabel.text = String(brewTimeInSeconds)
+        updateTimerLabel(with: timeRemaining)
         timerLabel.backgroundColor = .systemTeal
         timerLabel.textColor = .white
         timerLabel.font = timerLabel.font.withSize(100)
@@ -64,6 +64,13 @@ class TimerViewController: UIViewController {
         ])
     }
 
+    func updateTimerLabel(with timeRemaining: Int) {
+        let minutes = timeRemaining / 60
+        let seconds = timeRemaining % 60
+        self.timerLabel.text = String(format: "%02i:%02i", minutes, seconds)
+
+    }
+
     @objc func startButtonTapped() {
         timer = Timer.scheduledTimer(
             withTimeInterval: 1, repeats: true) { timer in
@@ -71,7 +78,8 @@ class TimerViewController: UIViewController {
                 timer.invalidate()
             } else {
                 self.timeRemaining -= 1
-                self.timerLabel.text = String(self.timeRemaining)
+//                self.timerLabel.text = String(self.timeRemaining)
+                self.updateTimerLabel(with: self.timeRemaining)
             }
         }
     }
