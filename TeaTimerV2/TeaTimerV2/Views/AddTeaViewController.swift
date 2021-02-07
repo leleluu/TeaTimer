@@ -74,7 +74,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        let tea = Tea(name: name, brewTime: brewTime)
+        let tea = Tea(name: name, brewTimeInMinutes: brewTime)
         self.onNewTeaAdded?(tea)
         self.dismiss(animated: true, completion: nil)
     }

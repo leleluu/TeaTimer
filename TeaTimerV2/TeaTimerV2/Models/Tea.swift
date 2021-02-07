@@ -2,5 +2,10 @@ import Foundation
 
 struct Tea: Codable {
     let name: String
-    let brewTime: Int
+    let brewTimeInSeconds: Int
+
+    init(name: String, brewTimeInMinutes: Int) {
+        self.name = name
+        self.brewTimeInSeconds = brewTimeInMinutes * 60
+    }
 }

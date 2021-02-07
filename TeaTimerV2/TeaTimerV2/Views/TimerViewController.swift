@@ -5,18 +5,18 @@ class TimerViewController: UIViewController {
     // MARK: Properties
     
     private let teaName: String
-    private let brewTime: Int
-    var timerLabel = UILabel()
-    private var startButton = UIButton()
+    private let brewTimeInSeconds: Int
+    private let timerLabel = UILabel()
+    private let startButton = UIButton()
     private var timer = Timer()
     private var timeRemaining: Int
 
     // MARK: Initializers
 
-    init(teaName: String, brewTime: Int) {
+    init(teaName: String, brewTimeInSeconds: Int) {
         self.teaName = teaName
-        self.brewTime = brewTime
-        self.timeRemaining = brewTime
+        self.brewTimeInSeconds = brewTimeInSeconds
+        self.timeRemaining = brewTimeInSeconds
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -29,7 +29,7 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        print(brewTime)
+        print(brewTimeInSeconds)
         setupViews()
     }
 
@@ -40,7 +40,7 @@ class TimerViewController: UIViewController {
         view.addSubview(startButton)
 
         // Timer label
-        timerLabel.text = String(brewTime)
+        timerLabel.text = String(brewTimeInSeconds)
         timerLabel.backgroundColor = .systemTeal
         timerLabel.textColor = .white
         timerLabel.font = timerLabel.font.withSize(100)
