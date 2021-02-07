@@ -78,7 +78,6 @@ class TimerViewController: UIViewController {
                 timer.invalidate()
             } else {
                 self.timeRemaining -= 1
-//                self.timerLabel.text = String(self.timeRemaining)
                 self.updateTimerLabel(with: self.timeRemaining)
             }
         }
