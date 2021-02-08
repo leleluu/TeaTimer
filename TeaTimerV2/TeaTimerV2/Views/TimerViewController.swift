@@ -7,7 +7,8 @@ class TimerViewController: UIViewController {
     private let teaName: String
     private let brewTimeInSeconds: Int
     private let timerLabel = UILabel()
-    private let startButton = UIButton()
+    private let startTimer = UIButton()
+    private let resetTimer = UIButton()
     private var timer = Timer()
     private var timeRemaining: Int
 
@@ -37,7 +38,8 @@ class TimerViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(timerLabel)
-        view.addSubview(startButton)
+        view.addSubview(startTimer)
+        view.addSubview(resetTimer)
 
         // Timer label
         updateTimerLabel(with: timeRemaining)
@@ -48,19 +50,29 @@ class TimerViewController: UIViewController {
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Start button
-        startButton.setTitle("START", for: .normal)
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.backgroundColor = .systemOrange
-        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+        startTimer.setTitle("START", for: .normal)
+        startTimer.translatesAutoresizingMaskIntoConstraints = false
+        startTimer.backgroundColor = .systemOrange
+        startTimer.addTarget(self, action: #selector(startTimerTapped), for: .touchUpInside)
+
+        // Reset button
+        resetTimer.setTitle("RESET", for: .normal)
+        resetTimer.translatesAutoresizingMaskIntoConstraints = false
+        resetTimer.backgroundColor = .systemIndigo
+        resetTimer.addTarget(self, action: #selector(resetTimerTapped), for: .touchUpInside)
+
 
         // Constraints
         NSLayoutConstraint.activate([
             timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             timerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             timerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            startButton.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32)
+            startTimer.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 16),
+            startTimer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            startTimer.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
+            resetTimer.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
+            resetTimer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            resetTimer.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -16)
         ])
     }
 
@@ -71,7 +83,7 @@ class TimerViewController: UIViewController {
 
     }
 
-    @objc func startButtonTapped() {
+    @objc func startTimerTapped() {
         timer = Timer.scheduledTimer(
             withTimeInterval: 1, repeats: true) { timer in
             if self.timeRemaining == 0 {
@@ -81,5 +93,11 @@ class TimerViewController: UIViewController {
                 self.updateTimerLabel(with: self.timeRemaining)
             }
         }
+    }
+
+    @objc func resetTimerTapped() {
+        timer.invalidate()
+        timeRemaining = brewTimeInSeconds
+        updateTimerLabel(with: timeRemaining)
     }
 }
