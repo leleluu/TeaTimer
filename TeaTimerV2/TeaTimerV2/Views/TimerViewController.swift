@@ -12,6 +12,7 @@ class TimerViewController: UIViewController {
 
     private var timer = Timer()
     private var timeRemaining: Int
+    private var timerIsRunning = false
 
     // MARK: Initializers
 
@@ -61,7 +62,6 @@ class TimerViewController: UIViewController {
         resetTimerButton.backgroundColor = .systemIndigo
         resetTimerButton.addTarget(self, action: #selector(resetTimerButtonTapped), for: .touchUpInside)
 
-
         // Constraints
         NSLayoutConstraint.activate([
             timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
@@ -83,7 +83,7 @@ class TimerViewController: UIViewController {
 
     }
 
-    @objc func startPauseTimerButtonTapped() {
+    private func startTimer() {
         timer = Timer.scheduledTimer(
             withTimeInterval: 1, repeats: true) { timer in
             if self.timeRemaining == 0 {
@@ -92,6 +92,23 @@ class TimerViewController: UIViewController {
                 self.timeRemaining -= 1
                 self.updateTimerLabel(with: self.timeRemaining)
             }
+        }
+        startPauseTimerButton.setTitle("PAUSE", for: .normal)
+        timerIsRunning = true
+    }
+
+    private func pauseTimer() {
+        timer.invalidate()
+        timerIsRunning = false
+        startPauseTimerButton.setTitle("START", for: .normal)
+    }
+
+
+    @objc func startPauseTimerButtonTapped() {
+        if timerIsRunning {
+            pauseTimer()
+        } else {
+            startTimer()
         }
     }
 
