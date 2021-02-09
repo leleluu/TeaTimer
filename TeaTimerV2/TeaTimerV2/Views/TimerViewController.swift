@@ -7,8 +7,9 @@ class TimerViewController: UIViewController {
     private let teaName: String
     private let brewTimeInSeconds: Int
     private let timerLabel = UILabel()
-    private let startTimer = UIButton()
-    private let resetTimer = UIButton()
+    private let startPauseTimerButton = UIButton()
+    private let resetTimerButton = UIButton()
+
     private var timer = Timer()
     private var timeRemaining: Int
 
@@ -30,7 +31,6 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        print(brewTimeInSeconds)
         setupViews()
     }
 
@@ -38,8 +38,8 @@ class TimerViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(timerLabel)
-        view.addSubview(startTimer)
-        view.addSubview(resetTimer)
+        view.addSubview(startPauseTimerButton)
+        view.addSubview(resetTimerButton)
 
         // Timer label
         updateTimerLabel(with: timeRemaining)
@@ -50,16 +50,16 @@ class TimerViewController: UIViewController {
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Start button
-        startTimer.setTitle("START", for: .normal)
-        startTimer.translatesAutoresizingMaskIntoConstraints = false
-        startTimer.backgroundColor = .systemOrange
-        startTimer.addTarget(self, action: #selector(startTimerTapped), for: .touchUpInside)
+        startPauseTimerButton.setTitle("START", for: .normal)
+        startPauseTimerButton.translatesAutoresizingMaskIntoConstraints = false
+        startPauseTimerButton.backgroundColor = .systemOrange
+        startPauseTimerButton.addTarget(self, action: #selector(startPauseTimerButtonTapped), for: .touchUpInside)
 
         // Reset button
-        resetTimer.setTitle("RESET", for: .normal)
-        resetTimer.translatesAutoresizingMaskIntoConstraints = false
-        resetTimer.backgroundColor = .systemIndigo
-        resetTimer.addTarget(self, action: #selector(resetTimerTapped), for: .touchUpInside)
+        resetTimerButton.setTitle("RESET", for: .normal)
+        resetTimerButton.translatesAutoresizingMaskIntoConstraints = false
+        resetTimerButton.backgroundColor = .systemIndigo
+        resetTimerButton.addTarget(self, action: #selector(resetTimerButtonTapped), for: .touchUpInside)
 
 
         // Constraints
@@ -67,12 +67,12 @@ class TimerViewController: UIViewController {
             timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             timerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             timerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            startTimer.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 16),
-            startTimer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            startTimer.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
-            resetTimer.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
-            resetTimer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            resetTimer.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -16)
+            startPauseTimerButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 16),
+            startPauseTimerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            startPauseTimerButton.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
+            resetTimerButton.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
+            resetTimerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            resetTimerButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -16)
         ])
     }
 
@@ -83,7 +83,7 @@ class TimerViewController: UIViewController {
 
     }
 
-    @objc func startTimerTapped() {
+    @objc func startPauseTimerButtonTapped() {
         timer = Timer.scheduledTimer(
             withTimeInterval: 1, repeats: true) { timer in
             if self.timeRemaining == 0 {
@@ -95,7 +95,7 @@ class TimerViewController: UIViewController {
         }
     }
 
-    @objc func resetTimerTapped() {
+    @objc func resetTimerButtonTapped() {
         timer.invalidate()
         timeRemaining = brewTimeInSeconds
         updateTimerLabel(with: timeRemaining)
