@@ -78,7 +78,7 @@ class TeaCollectionViewController: UICollectionViewController {
             )
 
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
+
             self.present(alert, animated: true, completion: nil)
         }
     }

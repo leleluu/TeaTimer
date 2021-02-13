@@ -4,8 +4,8 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Properties
     
-    private var nameTextField = UITextField()
-    private var brewTimeTextField = UITextField()
+    private var nameTextField = TextField()
+    private var brewTimeTextField = TextField()
 
     var onNewTeaAdded: ((Tea) -> Void)?
 
