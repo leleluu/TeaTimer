@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 class TimerViewController: UIViewController {
 
@@ -48,6 +49,7 @@ class TimerViewController: UIViewController {
         timerLabel.textColor = .white
         timerLabel.font = timerLabel.font.withSize(100)
         timerLabel.textAlignment = .center
+        timerLabel.adjustsFontSizeToFitWidth = true
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Start button
@@ -88,6 +90,8 @@ class TimerViewController: UIViewController {
             withTimeInterval: 1, repeats: true) { timer in
             if self.timeRemaining == 0 {
                 timer.invalidate()
+                self.timerLabel.text = "Tea is ready!"
+                self.playSound()
             } else {
                 self.timeRemaining -= 1
                 self.updateTimerLabel(with: self.timeRemaining)
@@ -101,6 +105,11 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         timerIsRunning = false
         startPauseTimerButton.setTitle("START", for: .normal)
+    }
+
+    private func playSound() {
+        let systemSoundID: SystemSoundID = 1016
+        AudioServicesPlaySystemSound(systemSoundID)
     }
 
 
