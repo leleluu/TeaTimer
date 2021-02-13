@@ -30,4 +30,13 @@ class TeaCollection {
             defaults.set(data, forKey: "teaCollection")
         }
     }
+
+    public func remove(at index: Int) {
+        all.remove(at: index)
+        
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(all) {
+            defaults.set(data, forKey: "teaCollection")
+        }
+    }
 }

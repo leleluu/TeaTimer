@@ -18,12 +18,20 @@ class TeaCollectionViewController: UICollectionViewController {
     
         collectionView.register(TeaCell.self, forCellWithReuseIdentifier: "cellid")
 
+        let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(longpressHappened))
+        longPressRecogniser.minimumPressDuration = 1
+        collectionView.addGestureRecognizer(longPressRecogniser)
     }
 
     // MARK: Public methods
 
     func addTea(tea: Tea) {
         teaCollection.add(tea)
+        collectionView.reloadData()
+    }
+
+    func removeTea(at index: Int) {
+        teaCollection.remove(at: index)
         collectionView.reloadData()
     }
 
@@ -55,6 +63,24 @@ class TeaCollectionViewController: UICollectionViewController {
         let addTeaNavigationController = UINavigationController(rootViewController: addTeaViewController)
         self.navigationController?.present(addTeaNavigationController, animated: true, completion: nil)
 
+    }
+
+    @objc func longpressHappened(sender: UILongPressGestureRecognizer) {
+        let position = sender.location(in: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: position) {
+            let index = indexPath.row
+
+            let alert = UIAlertController(title: "Do you want to delete this tea?", message: nil, preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { alertAction in
+                self.removeTea(at: index)
+                })
+            )
+
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
