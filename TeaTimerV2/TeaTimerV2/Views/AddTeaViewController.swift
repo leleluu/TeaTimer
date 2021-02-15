@@ -1,11 +1,12 @@
 import UIKit
 
-class AddTeaViewController: UIViewController, UITextFieldDelegate {
+class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // MARK: Properties
     
     private var nameTextField = TextField()
     private var brewTimeTextField = TextField()
+    private let brewTimePicker = UIPickerView()
 
     var onNewTeaAdded: ((Tea) -> Void)?
 
@@ -44,7 +45,11 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
         brewTimeTextField.layer.borderColor = UIColor.systemGray.cgColor
         brewTimeTextField.translatesAutoresizingMaskIntoConstraints = false
         brewTimeTextField.delegate = self
-        brewTimeTextField.keyboardType = .numberPad
+        brewTimeTextField.inputView = brewTimePicker
+
+        // Brew time Picker
+        brewTimePicker.dataSource = self
+        brewTimePicker.delegate = self
 
         // Constraints
         NSLayoutConstraint.activate([
@@ -90,5 +95,23 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+    // MARK: UIPickerViewDelegate and UIPickerViewDataSource methods
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return 10
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return String(row + 1) + " min"
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        brewTimeTextField.text = String(row + 1) 
+    }
+    
 }
 
