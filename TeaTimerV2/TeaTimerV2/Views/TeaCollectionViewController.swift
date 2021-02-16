@@ -70,7 +70,7 @@ class TeaCollectionViewController: UICollectionViewController {
         if let indexPath = collectionView.indexPathForItem(at: position) {
             let index = indexPath.row
 
-            let alert = UIAlertController(title: "Do you want to delete this tea?", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Do you want to delete this tea?", message: nil, preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { alertAction in
                 self.removeTea(at: index)
