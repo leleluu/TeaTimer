@@ -45,6 +45,7 @@ class TeaCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath) as! TeaCell
         cell.contentView.layer.cornerRadius = 30
         cell.teaNameLabel.text = teaCollection.all[indexPath.item].name
+        cell.contentView.backgroundColor = teaCollection.all[indexPath.item].backgroundColor.uiColor
         return cell
     }
 

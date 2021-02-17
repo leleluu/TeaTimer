@@ -9,6 +9,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     private let brewTimePicker = UIPickerView()
     private let errorLabel = UILabel()
     private let colorPickerButton = UIButton()
+    private var selectedColor = UIColor()
 
     var onNewTeaAdded: ((Tea) -> Void)?
 
@@ -102,7 +103,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
            nameTextField.text?.isEmpty == false,
            let brewTimeText = brewTimeTextField.text,
            let brewTime = Int(brewTimeText) {
-                let tea = Tea(name: name, brewTimeInMinutes: brewTime)
+            let tea = Tea(name: name, brewTimeInMinutes: brewTime, backgroundColor: Color.init(uiColor: selectedColor))
                 self.onNewTeaAdded?(tea)
                 self.dismiss(animated: true, completion: nil)
             errorLabel.isHidden = true
@@ -163,6 +164,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         let color = viewController.selectedColor
         self.colorPickerButton.backgroundColor = color
+        self.selectedColor = color
     }
 }
 
