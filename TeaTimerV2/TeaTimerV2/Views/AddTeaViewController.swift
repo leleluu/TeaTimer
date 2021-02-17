@@ -34,6 +34,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
 
         // Name textfield
         nameTextField.placeholder = "name"
+        nameTextField.becomeFirstResponder()
         nameTextField.layer.borderWidth = 1
         nameTextField.layer.cornerRadius = 10
         nameTextField.layer.borderColor = UIColor.systemGray.cgColor
