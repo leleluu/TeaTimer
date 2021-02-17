@@ -112,6 +112,14 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return true
     }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
+        if textField == brewTimeTextField {
+            brewTimeTextField.text = String(brewTimePicker.selectedRow(inComponent: 0) + 1)
+        }
+        return true
+    }
+
     // MARK: UIPickerViewDelegate and UIPickerViewDataSource methods
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
