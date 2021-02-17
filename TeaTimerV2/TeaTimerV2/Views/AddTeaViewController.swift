@@ -7,6 +7,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     private var nameTextField = TextField()
     private var brewTimeTextField = TextField()
     private let brewTimePicker = UIPickerView()
+    private let errorLabel = UILabel()
 
     var onNewTeaAdded: ((Tea) -> Void)?
 
@@ -29,6 +30,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     private func setupViews() {
         view.addSubview(nameTextField)
         view.addSubview(brewTimeTextField)
+        view.addSubview(errorLabel)
 
         // Name textfield
         nameTextField.placeholder = "name"
@@ -51,6 +53,14 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         brewTimePicker.dataSource = self
         brewTimePicker.delegate = self
 
+        // Error Label
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.numberOfLines = 0
+        errorLabel.text = "Your tea could not be saved ☹️. Please check the name and time fields are not empty."
+        errorLabel.textColor = .systemRed
+        errorLabel.isHidden = true
+
+
         // Constraints
         NSLayoutConstraint.activate([
             nameTextField.heightAnchor.constraint(equalToConstant: 35),
@@ -61,6 +71,10 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             brewTimeTextField.heightAnchor.constraint(equalToConstant: 35),
             brewTimeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             brewTimeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            errorLabel.heightAnchor.constraint(equalToConstant: 50),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            errorLabel.topAnchor.constraint(equalTo: brewTimeTextField.bottomAnchor, constant: 32)
         ])
     }
 
@@ -72,16 +86,18 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
 
     @objc private func saveButtonTapped() {
 
-        guard let name = nameTextField.text,
-              let brewTimeText = brewTimeTextField.text,
-              let brewTime = Int(brewTimeText)
-        else {
-            return
-        }
+        if let name = nameTextField.text,
+           nameTextField.text?.isEmpty == false,
+           let brewTimeText = brewTimeTextField.text,
+           let brewTime = Int(brewTimeText) {
+                let tea = Tea(name: name, brewTimeInMinutes: brewTime)
+                self.onNewTeaAdded?(tea)
+                self.dismiss(animated: true, completion: nil)
+            errorLabel.isHidden = true
 
-        let tea = Tea(name: name, brewTimeInMinutes: brewTime)
-        self.onNewTeaAdded?(tea)
-        self.dismiss(animated: true, completion: nil)
+        } else {
+            errorLabel.isHidden = false
+        }
     }
 
     // MARK: UITextfieldDelegate methods
