@@ -9,7 +9,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     private let brewTimePicker = UIPickerView()
     private let errorLabel = UILabel()
     private let colorPickerButton = UIButton()
-    private var selectedColor = UIColor()
+    private var selectedColor = UIColor.systemYellow
 
     var onNewTeaAdded: ((Tea) -> Void)?
 
