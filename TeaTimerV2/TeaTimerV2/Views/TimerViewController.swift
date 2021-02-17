@@ -36,6 +36,11 @@ class TimerViewController: UIViewController {
         setupViews()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer.invalidate()
+    }
+
     // MARK: Private methods
 
     private func setupViews() {
