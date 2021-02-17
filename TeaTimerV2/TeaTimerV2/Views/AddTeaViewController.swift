@@ -113,6 +113,8 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        errorLabel.isHidden = true
 
         if textField == brewTimeTextField {
             brewTimeTextField.text = String(brewTimePicker.selectedRow(inComponent: 0) + 1)
