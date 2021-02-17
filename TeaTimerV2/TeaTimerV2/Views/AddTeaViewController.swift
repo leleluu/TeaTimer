@@ -1,6 +1,6 @@
 import UIKit
 
-class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIColorPickerViewControllerDelegate {
 
     // MARK: Properties
     
@@ -8,6 +8,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     private var brewTimeTextField = TextField()
     private let brewTimePicker = UIPickerView()
     private let errorLabel = UILabel()
+    private let colorPickerButton = UIButton()
 
     var onNewTeaAdded: ((Tea) -> Void)?
 
@@ -31,6 +32,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         view.addSubview(nameTextField)
         view.addSubview(brewTimeTextField)
         view.addSubview(errorLabel)
+        view.addSubview(colorPickerButton)
 
         // Name textfield
         nameTextField.placeholder = "name"
@@ -61,6 +63,12 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         errorLabel.textColor = .systemRed
         errorLabel.isHidden = true
 
+        // Color picker button
+        colorPickerButton.translatesAutoresizingMaskIntoConstraints = false
+        colorPickerButton.setTitle("Pick a colour for your tea!", for: .normal)
+        colorPickerButton.layer.cornerRadius = 15
+        colorPickerButton.backgroundColor = .systemYellow
+        colorPickerButton.addTarget(self, action: #selector(colorPickerButtonTapped), for: .touchUpInside)
 
         // Constraints
         NSLayoutConstraint.activate([
@@ -75,7 +83,10 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             errorLabel.heightAnchor.constraint(equalToConstant: 50),
             errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            errorLabel.topAnchor.constraint(equalTo: brewTimeTextField.bottomAnchor, constant: 32)
+            errorLabel.topAnchor.constraint(equalTo: brewTimeTextField.bottomAnchor, constant: 32),
+            colorPickerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            colorPickerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            colorPickerButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 32),
         ])
     }
 
@@ -99,6 +110,13 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         } else {
             errorLabel.isHidden = false
         }
+    }
+
+    @objc private func colorPickerButtonTapped() {
+        let picker = UIColorPickerViewController()
+        picker.delegate = self
+        picker.supportsAlpha = false
+        present(picker, animated: true, completion: nil)
     }
 
     // MARK: UITextfieldDelegate methods
@@ -139,6 +157,12 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         brewTimeTextField.text = String(row + 1) 
     }
-    
+
+    // MARK: UIColorPickerViewControllerDelegate methods
+
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        let color = viewController.selectedColor
+        self.colorPickerButton.backgroundColor = color
+    }
 }
 
