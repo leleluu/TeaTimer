@@ -43,10 +43,10 @@ class TeaCell: UICollectionViewCell {
             teaImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             teaImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             teaImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            teaImageView.heightAnchor.constraint(equalToConstant: teaImageViewSizeConstant),
+            teaImageView.heightAnchor.constraint(equalToConstant: teaImageViewHeight),
             teaImageView.bottomAnchor.constraint(equalTo: teaNameLabel.topAnchor, constant: -8),
-            teaNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            teaNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            teaNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            teaNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             teaNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
