@@ -24,7 +24,6 @@ class TeaCell: UICollectionViewCell {
     private func setupViews() {
 
         contentView.backgroundColor = .systemYellow
-        let teaImageViewHeight = contentView.frame.height * 0.6
 
         // Tea name label
         contentView.addSubview(teaNameLabel)
@@ -42,7 +41,7 @@ class TeaCell: UICollectionViewCell {
             teaImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             teaImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             teaImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            teaImageView.heightAnchor.constraint(equalToConstant: teaImageViewHeight),
+            teaImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
             teaImageView.bottomAnchor.constraint(equalTo: teaNameLabel.topAnchor, constant: -8),
             teaNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             teaNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
