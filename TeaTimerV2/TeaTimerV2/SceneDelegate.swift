@@ -10,10 +10,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
-        let itemSizeConstant = ((window?.frame.width)!)/2.75
+        let itemHeight = window!.frame.width / 2.75
+        let itemWidth = window!.frame.width * 0.9
 
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: itemSizeConstant, height: itemSizeConstant)
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.sectionInset = UIEdgeInsets(top: 32, left: 32, bottom: 32, right: 32)
         layout.minimumLineSpacing = 32
 

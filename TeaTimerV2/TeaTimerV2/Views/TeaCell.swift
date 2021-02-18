@@ -24,15 +24,14 @@ class TeaCell: UICollectionViewCell {
     private func setupViews() {
 
         contentView.backgroundColor = .systemYellow
-        let teaImageViewSizeConstant = contentView.frame.height * 0.6
+        let teaImageViewHeight = contentView.frame.height * 0.6
 
         // Tea name label
         contentView.addSubview(teaNameLabel)
         teaNameLabel.translatesAutoresizingMaskIntoConstraints = false
         teaNameLabel.textColor = .white
         teaNameLabel.textAlignment = .center
-        teaNameLabel.numberOfLines = 2
-
+        
         // Tea imageview
         contentView.addSubview(teaImageView)
         teaImageView.translatesAutoresizingMaskIntoConstraints = false
