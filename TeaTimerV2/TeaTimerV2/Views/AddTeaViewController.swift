@@ -39,7 +39,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         nameTextField.placeholder = "name"
         nameTextField.becomeFirstResponder()
         nameTextField.layer.borderWidth = 1
-        nameTextField.layer.cornerRadius = 10
+        nameTextField.layer.cornerRadius = 15
         nameTextField.layer.borderColor = UIColor.systemGray.cgColor
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.delegate = self
@@ -47,7 +47,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         // Brew time textfield
         brewTimeTextField.placeholder = "brew time"
         brewTimeTextField.layer.borderWidth = 1
-        brewTimeTextField.layer.cornerRadius = 10
+        brewTimeTextField.layer.cornerRadius = 15
         brewTimeTextField.layer.borderColor = UIColor.systemGray.cgColor
         brewTimeTextField.translatesAutoresizingMaskIntoConstraints = false
         brewTimeTextField.delegate = self
@@ -87,6 +87,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             errorLabel.topAnchor.constraint(equalTo: brewTimeTextField.bottomAnchor, constant: 32),
             colorPickerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             colorPickerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            colorPickerButton.heightAnchor.constraint(equalToConstant: 100),
             colorPickerButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 32),
         ])
     }

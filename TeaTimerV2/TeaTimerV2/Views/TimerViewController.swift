@@ -32,7 +32,7 @@ class TimerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemYellow
         setupViews()
     }
 
@@ -50,7 +50,6 @@ class TimerViewController: UIViewController {
 
         // Timer label
         updateTimerLabel(with: timeRemaining)
-        timerLabel.backgroundColor = .systemTeal
         timerLabel.textColor = .white
         timerLabel.font = timerLabel.font.withSize(100)
         timerLabel.textAlignment = .center
@@ -60,13 +59,15 @@ class TimerViewController: UIViewController {
         // Start button
         startPauseTimerButton.setTitle("START", for: .normal)
         startPauseTimerButton.translatesAutoresizingMaskIntoConstraints = false
-        startPauseTimerButton.backgroundColor = .systemOrange
+        startPauseTimerButton.backgroundColor = .systemIndigo
+        startPauseTimerButton.layer.cornerRadius = 15
         startPauseTimerButton.addTarget(self, action: #selector(startPauseTimerButtonTapped), for: .touchUpInside)
 
         // Reset button
         resetTimerButton.setTitle("RESET", for: .normal)
         resetTimerButton.translatesAutoresizingMaskIntoConstraints = false
-        resetTimerButton.backgroundColor = .systemIndigo
+        resetTimerButton.backgroundColor = .systemGray
+        resetTimerButton.layer.cornerRadius = 15
         resetTimerButton.addTarget(self, action: #selector(resetTimerButtonTapped), for: .touchUpInside)
 
         // Constraints
@@ -103,6 +104,7 @@ class TimerViewController: UIViewController {
             }
         }
         startPauseTimerButton.setTitle("PAUSE", for: .normal)
+        startPauseTimerButton.backgroundColor = .systemTeal
         timerIsRunning = true
     }
 
@@ -110,6 +112,8 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         timerIsRunning = false
         startPauseTimerButton.setTitle("START", for: .normal)
+        startPauseTimerButton.backgroundColor = .systemIndigo
+
     }
 
     private func playSound() {
