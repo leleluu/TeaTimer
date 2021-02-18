@@ -127,7 +127,7 @@ class TimerViewController: UIViewController {
     }
 
     @objc func resetTimerButtonTapped() {
-        timer.invalidate()
+        pauseTimer()
         timeRemaining = brewTimeInSeconds
         updateTimerLabel(with: timeRemaining)
     }
