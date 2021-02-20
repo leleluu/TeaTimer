@@ -168,5 +168,10 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.colorPickerButton.backgroundColor = color
         self.selectedColor = color
     }
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        let color = viewController.selectedColor
+        self.colorPickerButton.backgroundColor = color
+        self.selectedColor = color
+    }
 }
 
