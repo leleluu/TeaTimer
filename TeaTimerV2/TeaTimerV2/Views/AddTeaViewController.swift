@@ -117,6 +117,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @objc private func colorPickerButtonTapped() {
         let picker = UIColorPickerViewController()
         picker.delegate = self
+        picker.selectedColor = selectedColor
         picker.supportsAlpha = false
         present(picker, animated: true, completion: nil)
     }
