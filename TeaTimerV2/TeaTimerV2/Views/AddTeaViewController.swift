@@ -73,10 +73,14 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
 
         // Constraints
         NSLayoutConstraint.activate([
+            colorPickerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            colorPickerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            colorPickerButton.heightAnchor.constraint(equalToConstant: 100),
+            colorPickerButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            colorPickerButton.bottomAnchor.constraint(equalTo: nameTextField.topAnchor, constant: -16),
             nameTextField.heightAnchor.constraint(equalToConstant: 35),
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             nameTextField.bottomAnchor.constraint(equalTo: brewTimeTextField.topAnchor, constant: -16),
             brewTimeTextField.heightAnchor.constraint(equalToConstant: 35),
             brewTimeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
@@ -84,11 +88,7 @@ class AddTeaViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             errorLabel.heightAnchor.constraint(equalToConstant: 50),
             errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            errorLabel.topAnchor.constraint(equalTo: brewTimeTextField.bottomAnchor, constant: 32),
-            colorPickerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            colorPickerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            colorPickerButton.heightAnchor.constraint(equalToConstant: 100),
-            colorPickerButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 32),
+            errorLabel.topAnchor.constraint(equalTo: brewTimeTextField.bottomAnchor, constant: 32)
         ])
     }
 
