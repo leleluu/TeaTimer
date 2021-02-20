@@ -5,7 +5,7 @@ class TeaCell: UICollectionViewCell {
     // MARK: Properties
 
     var teaNameLabel = UILabel()
-    var teaImageView = UIImageView(image: UIImage(named: "teacup"))
+    var teaImageView = UIImageView()
 
     // MARK: Initialiser
     
