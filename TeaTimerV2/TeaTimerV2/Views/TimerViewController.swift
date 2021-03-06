@@ -15,6 +15,8 @@ class TimerViewController: UIViewController {
     private var timeRemaining: Int
     private var timerIsRunning = false
 
+    private var timeAppEnteredBackground: Date?
+
     // MARK: Initializers
 
     init(teaName: String, brewTimeInSeconds: Int) {
@@ -34,12 +36,18 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemYellow
         setupViews()
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appEnteredBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+
+        notificationCenter.addObserver(self, selector: #selector(appEnteredForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         timer.invalidate()
     }
+
 
     // MARK: Private methods
 
@@ -113,7 +121,6 @@ class TimerViewController: UIViewController {
         timerIsRunning = false
         startPauseTimerButton.setTitle("START", for: .normal)
         startPauseTimerButton.backgroundColor = .systemIndigo
-
     }
 
     private func playSound() {
@@ -134,5 +141,29 @@ class TimerViewController: UIViewController {
         pauseTimer()
         timeRemaining = brewTimeInSeconds
         updateTimerLabel(with: timeRemaining)
+    }
+
+    @objc func appEnteredBackground() {
+        timeAppEnteredBackground = Date()
+        timer.invalidate()
+    }
+
+    @objc func appEnteredForeground() {
+        guard timerIsRunning else {
+            return
+        }
+        let timeElapsed = Int(Date().timeIntervalSince(timeAppEnteredBackground!)) + 1
+        timeRemaining -= timeElapsed
+
+        if timeRemaining == 0 {
+            timer.invalidate()
+            timerLabel.text = "Tea is ready!"
+            playSound()
+        } else if timeRemaining < 0 {
+            // TODO: use local notification to alert and reset timer label
+        } else {
+            updateTimerLabel(with: timeRemaining)
+            startTimer()
+        }
     }
 }
