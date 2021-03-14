@@ -76,7 +76,9 @@ class TeaCollectionViewController: UICollectionViewController {
             let tea = teaCollection.all[indexPath.item]
             let timerViewController = TimerViewController(teaName: tea.name, brewTimeInSeconds: tea.brewTimeInSeconds)
             timerViewController.title = tea.name
-            navigationController?.pushViewController(timerViewController, animated: true)
+
+            let navigationController = UINavigationController(rootViewController: timerViewController)
+            self.present(navigationController, animated: true, completion: nil)
         }
 
     }

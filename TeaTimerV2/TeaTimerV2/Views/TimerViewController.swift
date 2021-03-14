@@ -56,6 +56,11 @@ class TimerViewController: UIViewController {
         view.addSubview(startPauseTimerButton)
         view.addSubview(resetTimerButton)
 
+        // Navigation bar
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+
+        navigationItem.leftBarButtonItem = cancelButton
+
         // Timer label
         updateTimerLabel(with: timeRemaining)
         timerLabel.textColor = .white
@@ -165,5 +170,9 @@ class TimerViewController: UIViewController {
             updateTimerLabel(with: timeRemaining)
             startTimer()
         }
+    }
+
+    @objc func cancelButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
