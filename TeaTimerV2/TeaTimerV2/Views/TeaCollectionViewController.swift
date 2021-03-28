@@ -1,4 +1,5 @@
 import UIKit
+import UserNotifications
 
 class TeaCollectionViewController: UICollectionViewController {
 
@@ -10,6 +11,8 @@ class TeaCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        requestPermissionForNotifications()
 
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .white
@@ -42,6 +45,14 @@ class TeaCollectionViewController: UICollectionViewController {
         let addTeaNavigationController = UINavigationController(rootViewController: addTeaViewController)
         self.navigationController?.present(addTeaNavigationController, animated: true, completion: nil)
 
+    }
+
+    private func requestPermissionForNotifications() {
+
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            // Completion handler is non optional but not required for this use case
+            }
     }
 
     // MARK: UICollectionViewDataSource
