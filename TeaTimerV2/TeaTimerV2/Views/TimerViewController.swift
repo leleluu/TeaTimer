@@ -134,6 +134,11 @@ class TimerViewController: UIViewController {
         AudioServicesPlaySystemSound(systemSoundID)
     }
 
+    private func resetTimer() {
+        pauseTimer()
+        timeRemaining = brewTimeInSeconds
+        updateTimerLabel(with: timeRemaining)
+    }
 
     @objc func startPauseTimerButtonTapped() {
         if timerIsRunning {
@@ -144,9 +149,7 @@ class TimerViewController: UIViewController {
     }
 
     @objc func resetTimerButtonTapped() {
-        pauseTimer()
-        timeRemaining = brewTimeInSeconds
-        updateTimerLabel(with: timeRemaining)
+        resetTimer()
     }
 
     @objc func appEnteredBackground() {
@@ -179,7 +182,7 @@ class TimerViewController: UIViewController {
             timerLabel.text = "Tea is ready!"
             playSound()
         } else if timeRemaining < 0 {
-            // TODO: use local notification to alert and reset timer label
+            resetTimer()
         } else {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Timer"])
             updateTimerLabel(with: timeRemaining)
