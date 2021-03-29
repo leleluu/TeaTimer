@@ -153,6 +153,10 @@ class TimerViewController: UIViewController {
         timeAppEnteredBackground = Date()
         timer.invalidate()
 
+        guard timerIsRunning else {
+            return
+        }
+
         let content = UNMutableNotificationContent()
         content.title = "Tea is ready!"
         content.sound = UNNotificationSound.default
