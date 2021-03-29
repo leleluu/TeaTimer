@@ -1,5 +1,6 @@
 import UIKit
 import AVFoundation
+import UserNotifications
 
 class TimerViewController: UIViewController {
 
@@ -151,6 +152,15 @@ class TimerViewController: UIViewController {
     @objc func appEnteredBackground() {
         timeAppEnteredBackground = Date()
         timer.invalidate()
+
+        let content = UNMutableNotificationContent()
+        content.title = "Tea is ready!"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeRemaining), repeats: false)
+
+        let request = UNNotificationRequest(identifier: "Timer", content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 
     @objc func appEnteredForeground() {
