@@ -181,6 +181,7 @@ class TimerViewController: UIViewController {
         } else if timeRemaining < 0 {
             // TODO: use local notification to alert and reset timer label
         } else {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Timer"])
             updateTimerLabel(with: timeRemaining)
             startTimer()
         }
