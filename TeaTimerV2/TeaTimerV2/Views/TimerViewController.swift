@@ -160,14 +160,22 @@ class TimerViewController: UIViewController {
             return
         }
 
-        let content = UNMutableNotificationContent()
-        content.title = "Tea is ready!"
-        content.sound = UNNotificationSound.default
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeRemaining), repeats: false)
+        UNUserNotificationCenter.current().getNotificationSettings { notificationSettings in
+            switch notificationSettings.authorizationStatus {
+            case .authorized:
+                let content = UNMutableNotificationContent()
+                content.title = "Tea is ready!"
+                content.sound = UNNotificationSound.default
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(self.timeRemaining), repeats: false)
 
-        let request = UNNotificationRequest(identifier: "Timer", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: "Timer", content: content, trigger: trigger)
 
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
+            default:
+                print("no authorisation")
+            }
+        }
     }
 
     @objc func appEnteredForeground() {
