@@ -13,10 +13,10 @@ As I learn best when tinkering, I did not spend too much time on design or user 
 
 ### Achievements 🦩
 
-- Display tea collection with UICollectionView
-- Set up constraints using AutoLayout in code
-- Build an input form using UITextField, UIPickerView, and UIColorPickerViewController
-- Persist tea collection across sessions using UserDefaults 
-- Build countdown timer using Timer class
-- Notify user of finished timer with sound via AVFoundation 
+- Display tea collection with `UICollectionView`
+- Set up constraints using Auto Layout in code
+- Build an input form using `UITextField`, `UIPickerView`, and `UIColorPickerViewController`
+- Persist tea collection across sessions using `UserDefaults` 
+- Build countdown timer using `Timer` class
+- Notify user of finished timer with sound via `AVFoundation` 
 - Notify user of finished timer with local notifications
