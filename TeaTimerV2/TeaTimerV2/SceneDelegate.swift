@@ -10,13 +10,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
+        let defaultMargin: CGFloat = 32
+        let sectionInset = UIEdgeInsets(
+            top: defaultMargin,
+            left: defaultMargin,
+            bottom: defaultMargin,
+            right: defaultMargin
+        )
+
         let itemHeight = window!.frame.width / 2.75
-        let itemWidth = window!.frame.width * 0.9
+        let itemWidth = window!.frame.width - (sectionInset.left + sectionInset.right)
 
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.sectionInset = UIEdgeInsets(top: 32, left: 32, bottom: 32, right: 32)
-        layout.minimumLineSpacing = 32
+        layout.sectionInset = sectionInset
+
+        layout.minimumLineSpacing = defaultMargin
 
         let viewController = TeaCollectionViewController(collectionViewLayout: layout)
         let navigationViewController = UINavigationController(rootViewController: viewController)
