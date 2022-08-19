@@ -1,4 +1,4 @@
-# Tea Timer - v2
+# Tea Timer 
 The goal of this project was to recreate and finish my first ever iOS app - a tea timer to ensure the perfect brew ☺️ 🍵!  
 As I learn best when tinkering, I did not spend too much time on design or user experience here, but instead used this to play around with Apple's core frameworks.
 
